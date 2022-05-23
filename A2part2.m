@@ -36,12 +36,14 @@ h = 480;
 pixels = w*h;
 figure(1)
 imshow(reshape(sig(1,:), h, w))
+
 %% 2.2
 Fs = 1000;                                  % Pixel Sampling Rate [Hz]
 T = pixels/Fs;                              % Time to recieve an image
 t = linspace(0, T, length(sig)+1);          % Time vector for full image
 f = linspace(-Fs/2, Fs/2, length(sig)+1);   % Frequency Vector
 f(end) = []; t(end)=[];
+
 %% 2.3
 figure(2); hold on;
 subplot(3, 1, 1)
@@ -55,6 +57,7 @@ plot(f, abs(fftshift(SIG(1, :)/Fs)))
 xlabel("Frequency [Hz]"), ylabel("Magnitude"), title("Frequency Domain")
 
 % Looks like the noise is about 1.48 secs, so use candidateT(1)
+
 %% 2.4
 noisePeriod = candidateT(1);
 noisePeriodSamples = noisePeriod * Fs;
@@ -65,6 +68,7 @@ subplot(3, 1, 3)
 plot(t, NoisesigFull)
 xlim([0 3])
 xlabel("Time [s]"), ylabel("Amplitude"), title("Periodic Noise Signal (First 3 s)")
+
 %% 2.5
 % Complex Fourier Coefficients
 tNoise = linspace(0, noisePeriod, length(Noisesig)+1); tNoise(end) = [];
@@ -82,8 +86,10 @@ NoisesigApprox = cn * exp(1j*2*pi*n*f0*tNoise);
 %% 2.6
 % Bias - make the real coefficient c0 = 0;
 cn(N+1) = 0;
+
 %% 2.7
 Noisesig_fs = cn * exp(1j*2*pi*n*f0*tNoise);
+
 %% 2.8
 figure(3), hold on;
 plot(tNoise, Noisesig)
