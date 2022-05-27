@@ -34,3 +34,55 @@ load('A2P3Data.mat');
 % f_recov - New frequency vector for recovered and resampled signals 
 %
 %====Enter your code below this line================================
+%% Setup
+B = 8e3;                    % Bandwidth  [Hz]
+
+%% 3.1
+Ts = 1/fs;                  % Sampling Period
+t = 0:Ts:(length(muxSignal)/fs); t(end) = [];
+% Plot t
+figure(1), hold on;
+subplot(1, 2, 1)
+plot(t, muxSignal);
+xlabel("Time [s]"), ylabel("Amplitude"), title("Time Domain of muxSignal")
+
+MUXSIG = fft(muxSignal);
+f = linspace(-fs/2, fs/2, length(t)+1); f(end)=[];
+% Plot f
+subplot(1, 2, 2)
+plot(f, abs(fftshift(MUXSIG/fs)));
+xlabel("Frequency [Hz]"), ylabel("Magnitude"), title("Magnitude Spectrum of muxSignal")
+
+%% 3.2
+
+fshift = [32e3 80e3 128e3 176e3 224e3 272e3];       % Frequency shifts
+fshift_indices = zeros(size(fshift));
+MUXSIG_shift = fftshift(MUXSIG);
+for k = 1:length(fshift)
+    fshift_indices(k) = find(f == fshift(k));
+end
+Mag = abs(MUXSIG_shift(fshift_indices))/fs;         % magnitude
+Phase = angle(MUXSIG_shift(fshift_indices));        % [rads]    
+
+%% 3.3
+xdm = FDMDemux(muxSignal, t, Mag, fshift, Phase);
+figure(2), hold on;
+rows = size(xdm, 1);
+for k = 1:rows
+    subplot(rows, 2, 2*k-1)
+    plot(t, xdm(k, :));
+end
+%% 3.4
+XDM = fft(xdm, length(xdm), 2);
+for k = 1:rows
+    subplot(rows, 2, 2*k)
+    plot(f, abs(fftshift(XDM(k, :)/fs)));
+end
+%% 3.5
+%% 3.6
+%% 3.7
+%% 3.8
+%% 3.9
+%% 3.10
+%% 3.11
+%% 3.12
