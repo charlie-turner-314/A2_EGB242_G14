@@ -79,9 +79,20 @@ for k = 1:rows
     plot(f, abs(fftshift(XDM(k, :)/fs)));
 end
 %% 3.5
+% bode plot shows low pass is number 1. Make some stuff ap about the
+% denominator lol
+factorTF(sys(1)) % shows its  a time multiplexed exponential -> (1/(s+a)^2)
+figure(), title("System 1 Freq Response")
+h = bodeplot(sys(4));
+setoptions(h, 'FreqUnits', 'Hz')
 %% 3.6
+
 %% 3.7
-%% 3.8
+%% 3.8  don't know anything after this
+MSG = sys(1) * (XDM(1, :));
+msg = ifft(MSG);
+figure()
+plot(t, msg(1, :))
 %% 3.9
 %% 3.10
 %% 3.11
