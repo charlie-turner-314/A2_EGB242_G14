@@ -92,9 +92,9 @@ end
 impulse = [1 zeros([1 length(XDM)-1])];
 impulse_response = lsim(sys(1), impulse, t);
 FrequencyResponse = fft(impulse_response);
-MSG = zeros(size(XDM));
+MSG = z
 for k = 1:size(XDM, 1)
-    MSG(k, :) = FrequencyResponse.' .* XDM(k, :);
+    MSG(k) = FrequencyResponse .* XDM(k, :);
 end
 %% 3.9
 %% 3.10

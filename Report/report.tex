@@ -1,4 +1,7 @@
 \documentclass[a4paper]{article}
+\usepackage{asmmath}
+\usepackage{titling}
+\DeclareMathOperator{\sinc}{sinc}
 
 \author{
     Charlie Turner: n10752846
@@ -10,9 +13,9 @@
 \title{EGB242 Assignment 2}
 
 \begin{document}
-\begin{titlepage}
+\begin{titlingpage}
     \maketitle
-\end{titlepage}
+\end{titlingpage}
 
 \section{Introduction}
 
@@ -36,6 +39,22 @@ properties of the habitat's rooms must be analysed, removing interference and
 noise arising from the communication channel and method.
 
 \section{Mars Rover}
+
+With the crew landing soon, a rover has been gathering important data regarding
+possible landing sites. Until a malfunction on the rover, data has been
+communicated directly with Earth, where it can be analysed and the results sent
+directly to astronauts on board Mars-242. The rover's data is vital for the
+survival of the mission, so a solution has been found to send the raw data
+directly to astronauts, but there are complications in this process.
+
+\subsection*{Communication Channels}
+\begin{math}
+    s_{rov}(t) = 8000 \times \sinc^2(4000t)\cos(2\pi \times 8000t)
+\end{math}
+\subsection*{Rover Transmission Function}
+\subsection*{Filtering Information}
+\subsection*{Signal Recovery}
+
 \section{Choosing a Landing Site}
 \section{Habitat Impulse Analysis}
 \section{Reflection}
