@@ -1,0 +1,415 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "c:\\Users\\turne\\OneDrive - Queensland University of Technology\\Documents\\EGB242\\Assessment 2",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2022-05-31 17:19:19",
+            "filesum": 51,
+            "codesum": 4124,
+            "commentsum": 2359,
+            "blanksum": 97,
+            "statistics": {
+                ".m": {
+                    "code": 135,
+                    "comment": 180,
+                    "blank": 35
+                },
+                ".pdf": {
+                    "code": 1773,
+                    "comment": 2178,
+                    "blank": 12
+                },
+                "": {
+                    "code": 29,
+                    "comment": 1,
+                    "blank": 1
+                },
+                ".aux": {
+                    "code": 37,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".auxlock": {
+                    "code": 1,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".tex": {
+                    "code": 153,
+                    "comment": 0,
+                    "blank": 27
+                },
+                ".log": {
+                    "code": 621,
+                    "comment": 0,
+                    "blank": 15
+                },
+                ".fls": {
+                    "code": 1006,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".pygtex": {
+                    "code": 50,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".pygstyle": {
+                    "code": 90,
+                    "comment": 0,
+                    "blank": 3
+                },
+                ".md5": {
+                    "code": 1,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".dpth": {
+                    "code": 0,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".fdb_latexmk": {
+                    "code": 228,
+                    "comment": 0,
+                    "blank": 4
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 1,
+                    "code": 27,
+                    "comment": 0,
+                    "filename": ".gitattributes"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 1,
+                    "filename": ".gitignore"
+                },
+                {
+                    "filename": "A2P2Data.mat",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "A2P3Data.mat",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 22,
+                    "code": 81,
+                    "comment": 104,
+                    "filename": "A2part2.m"
+                },
+                {
+                    "blank": 11,
+                    "code": 47,
+                    "comment": 53,
+                    "filename": "A2part3.m"
+                },
+                {
+                    "blank": 12,
+                    "code": 1617,
+                    "comment": 1883,
+                    "filename": "Assignment2.pdf"
+                },
+                {
+                    "filename": "decoder.p",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 156,
+                    "comment": 295,
+                    "filename": "EGB242 Assignment 2 Group 14 Plan.pdf"
+                },
+                {
+                    "filename": "EGB242 Assignment 2 Group Plan.docx",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "estimateNoise.p",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "factorTF.p",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "FDMDemux.p",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "genDataP2.dat",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "genDataP3.dat",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 2,
+                    "code": 7,
+                    "comment": 23,
+                    "filename": "GenerateAssignment2Data.m"
+                },
+                {
+                    "filename": "genP1Data.p",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "genP2Data.p",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "genP3Data.p",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "Report\\_minted-report\\0EBF0A220ADC33A3ED0B72D2855375CC48C297BF871FDD246F089B6BC9745F5A.pygtex"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "Report\\_minted-report\\21A96D3A3EF38FB3D55A9D522B10A73248C297BF871FDD246F089B6BC9745F5A.pygtex"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "Report\\_minted-report\\5DBB4E0A223ECB8C34E0E685D280745348C297BF871FDD246F089B6BC9745F5A.pygtex"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "Report\\_minted-report\\81F6A0647E2C16FC706694578C4BA00C48C297BF871FDD246F089B6BC9745F5A.pygtex"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "Report\\_minted-report\\A2A2211C725A8D2B2F473B7C81777B8C48C297BF871FDD246F089B6BC9745F5A.pygtex"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "Report\\_minted-report\\AFCBC5FE3BDC169C2129D398C5792E8148C297BF871FDD246F089B6BC9745F5A.pygtex"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "Report\\_minted-report\\C3CFF067B397177398C6102DAB58EA7E48C297BF871FDD246F089B6BC9745F5A.pygtex"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "Report\\_minted-report\\C4425195872C9968435EB2084A81DD8748C297BF871FDD246F089B6BC9745F5A.pygtex"
+                },
+                {
+                    "blank": 3,
+                    "code": 90,
+                    "comment": 0,
+                    "filename": "Report\\_minted-report\\default.pygstyle"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "Report\\_minted-report\\E499D435E7F75AFC95FAC756E603FCA748C297BF871FDD246F089B6BC9745F5A.pygtex"
+                },
+                {
+                    "filename": "Report\\figures\\p2-bandnoise.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "Report\\figures\\p2-compharms.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "Report\\figures\\p2-im1.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "Report\\figures\\p2-im1improved.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "Report\\figures\\p2-im1recov.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "Report\\figures\\p2-noisecomp.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "Report\\figures\\p2-noisefscomp.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "Report\\figures\\p2-noisy.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "Report\\figures\\p2-timefreq.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0,
+                    "filename": "Report\\figures\\report-figure0.dpth"
+                },
+                {
+                    "blank": 4,
+                    "code": 258,
+                    "comment": 0,
+                    "filename": "Report\\figures\\report-figure0.log"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "Report\\figures\\report-figure0.md5"
+                },
+                {
+                    "filename": "Report\\figures\\report-figure0.pdf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 37,
+                    "comment": 0,
+                    "filename": "Report\\report.aux"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "Report\\report.auxlock"
+                },
+                {
+                    "blank": 4,
+                    "code": 228,
+                    "comment": 0,
+                    "filename": "Report\\report.fdb_latexmk"
+                },
+                {
+                    "blank": 0,
+                    "code": 1006,
+                    "comment": 0,
+                    "filename": "Report\\report.fls"
+                },
+                {
+                    "blank": 11,
+                    "code": 363,
+                    "comment": 0,
+                    "filename": "Report\\report.log"
+                },
+                {
+                    "filename": "Report\\report.pdf",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "Report\\report.synctex.gz",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 27,
+                    "code": 153,
+                    "comment": 0,
+                    "filename": "Report\\report.tex"
+                },
+                {
+                    "filename": "voice.wav",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                }
+            ]
+        }
+    ]
+}

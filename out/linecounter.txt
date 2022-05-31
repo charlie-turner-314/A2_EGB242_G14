@@ -1,0 +1,80 @@
+===============================================================================
+EXTENSION NAME : linecounter
+EXTENSION VERSION : 0.2.7
+-------------------------------------------------------------------------------
+count time : 2022-05-31 17:19:19
+count workspace : c:\Users\turne\OneDrive - Queensland University of Technology\Documents\EGB242\Assessment 2
+total files : 51
+total code lines : 4124
+total comment lines : 2359
+total blank lines : 97
+
+    statistics
+   |      extension|     total code|  total comment|    total blank|percent|
+   -------------------------------------------------------------------------
+   |             .m|            135|            180|             35|    3.3|
+   |           .pdf|           1773|           2178|             12|     43|
+   |               |             29|              1|              1|   0.70|
+   |           .aux|             37|              0|              0|   0.90|
+   |       .auxlock|              1|              0|              0|  0.024|
+   |           .tex|            153|              0|             27|    3.7|
+   |           .log|            621|              0|             15|     15|
+   |           .fls|           1006|              0|              0|     24|
+   |        .pygtex|             50|              0|              0|    1.2|
+   |      .pygstyle|             90|              0|              3|    2.2|
+   |           .md5|              1|              0|              0|  0.024|
+   |          .dpth|              0|              0|              0|    0.0|
+   |   .fdb_latexmk|            228|              0|              4|    5.5|
+   -------------------------------------------------------------------------
+.gitattributes, code is 27, comment is 0, blank is 1.
+.gitignore, code is 2, comment is 1, blank is 0.
+A2P2Data.mat, it is a binary file.
+A2P3Data.mat, it is a binary file.
+A2part2.m, code is 81, comment is 104, blank is 22.
+A2part3.m, code is 47, comment is 53, blank is 11.
+Assignment2.pdf, code is 1617, comment is 1883, blank is 12.
+decoder.p, it is a binary file.
+EGB242 Assignment 2 Group 14 Plan.pdf, code is 156, comment is 295, blank is 0.
+EGB242 Assignment 2 Group Plan.docx, it is a binary file.
+estimateNoise.p, it is a binary file.
+factorTF.p, it is a binary file.
+FDMDemux.p, it is a binary file.
+genDataP2.dat, it is a binary file.
+genDataP3.dat, it is a binary file.
+GenerateAssignment2Data.m, code is 7, comment is 23, blank is 2.
+genP1Data.p, it is a binary file.
+genP2Data.p, it is a binary file.
+genP3Data.p, it is a binary file.
+Report\_minted-report\0EBF0A220ADC33A3ED0B72D2855375CC48C297BF871FDD246F089B6BC9745F5A.pygtex, code is 6, comment is 0, blank is 0.
+Report\_minted-report\21A96D3A3EF38FB3D55A9D522B10A73248C297BF871FDD246F089B6BC9745F5A.pygtex, code is 10, comment is 0, blank is 0.
+Report\_minted-report\5DBB4E0A223ECB8C34E0E685D280745348C297BF871FDD246F089B6BC9745F5A.pygtex, code is 5, comment is 0, blank is 0.
+Report\_minted-report\81F6A0647E2C16FC706694578C4BA00C48C297BF871FDD246F089B6BC9745F5A.pygtex, code is 8, comment is 0, blank is 0.
+Report\_minted-report\A2A2211C725A8D2B2F473B7C81777B8C48C297BF871FDD246F089B6BC9745F5A.pygtex, code is 3, comment is 0, blank is 0.
+Report\_minted-report\AFCBC5FE3BDC169C2129D398C5792E8148C297BF871FDD246F089B6BC9745F5A.pygtex, code is 5, comment is 0, blank is 0.
+Report\_minted-report\C3CFF067B397177398C6102DAB58EA7E48C297BF871FDD246F089B6BC9745F5A.pygtex, code is 7, comment is 0, blank is 0.
+Report\_minted-report\C4425195872C9968435EB2084A81DD8748C297BF871FDD246F089B6BC9745F5A.pygtex, code is 3, comment is 0, blank is 0.
+Report\_minted-report\default.pygstyle, code is 90, comment is 0, blank is 3.
+Report\_minted-report\E499D435E7F75AFC95FAC756E603FCA748C297BF871FDD246F089B6BC9745F5A.pygtex, code is 3, comment is 0, blank is 0.
+Report\figures\p2-bandnoise.png, it is a binary file.
+Report\figures\p2-compharms.png, it is a binary file.
+Report\figures\p2-im1.png, it is a binary file.
+Report\figures\p2-im1improved.png, it is a binary file.
+Report\figures\p2-im1recov.png, it is a binary file.
+Report\figures\p2-noisecomp.png, it is a binary file.
+Report\figures\p2-noisefscomp.png, it is a binary file.
+Report\figures\p2-noisy.png, it is a binary file.
+Report\figures\p2-timefreq.png, it is a binary file.
+Report\figures\report-figure0.dpth, code is 0, comment is 0, blank is 0.
+Report\figures\report-figure0.log, code is 258, comment is 0, blank is 4.
+Report\figures\report-figure0.md5, code is 1, comment is 0, blank is 0.
+Report\figures\report-figure0.pdf, it is a binary file.
+Report\report.aux, code is 37, comment is 0, blank is 0.
+Report\report.auxlock, code is 1, comment is 0, blank is 0.
+Report\report.fdb_latexmk, code is 228, comment is 0, blank is 4.
+Report\report.fls, code is 1006, comment is 0, blank is 0.
+Report\report.log, code is 363, comment is 0, blank is 11.
+Report\report.pdf, it is a binary file.
+Report\report.synctex.gz, it is a binary file.
+Report\report.tex, code is 153, comment is 0, blank is 27.
+voice.wav, it is a binary file.
+===============================================================================

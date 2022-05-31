@@ -34,20 +34,20 @@ load('A2P3Data.mat');
 % f_recov - New frequency vector for recovered and resampled signals 
 %
 %====Enter your code below this line================================
-%% Setup
-B = 8e3;                    % Bandwidth  [Hz]
 
 %% 3.1
-Ts = 1/fs;                  % Sampling Period
-t = 0:Ts:(length(muxSignal)/fs); t(end) = [];
-% Plot t
-figure, hold on;
+Ts = 1/fs;                                          % Sampling Period [s]
+t = 0:Ts:0.5; t(end) = [];       % Time vector
+MUXSIG = fft(muxSignal);                            % Fourier Transform
+f = linspace(-fs/2, fs/2, length(t)+1); f(end)=[];  % Freuquency Vector
+
+% Plot signal against time
+figure('Name',"Recieved Signal"), hold on;
 subplot(1, 2, 1)
 plot(t, muxSignal);
 xlabel("Time [s]"), ylabel("Amplitude"), title("Time Domain of muxSignal")
 
-MUXSIG = fft(muxSignal);
-f = linspace(-fs/2, fs/2, length(t)+1); f(end)=[];
+
 % Plot f
 subplot(1, 2, 2)
 plot(f, abs(fftshift(MUXSIG/fs)));
@@ -124,6 +124,7 @@ t_recov = linspace(0, 0.5, length(impulses_recov)+1); t_recov(end) = [];
 f_recov = linspace(-fs_recov/2, fs_recov/2, length(t_recov)+1); f_recov(end) = [];
 freqResponses = fft(impulses_recov, length(impulses_recov), 2);
 for k = 1:3
+    k = 2
     [text] = decoder(texts_recov(k, :));
     figure
     sgtitle(text)
@@ -144,5 +145,5 @@ voice = voice(:, 1).';
 voice = resample(voice, fs_recov, fs_voice);
 % apply the impulse response as a convolution in the time domain
 % 'same' will ensure the length is the same for both
-voice_thing = conv(voice, impulses_recov(3, :), 'same');
+voice_thing = conv(voice, impulses_recov(2, :), 'same');
 sound(voice_thing, fs_recov)

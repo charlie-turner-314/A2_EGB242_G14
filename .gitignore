@@ -1,3 +1,4 @@
 .vscode
-Report/*.*
+Report
 !Report/report.tex
+!Report/report.pdf
