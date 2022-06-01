@@ -7,11 +7,14 @@
 \usepackage[none]{hyphenat}
 \usepackage{graphicx}
 \usepackage{wrapfig}
+\usepackage{tabularx}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
 \usepackage[format=plain,
     font={small, it}, justification=centering]{caption}
 \setkeys{Gin}{width=14cm}
 \definecolor{bg}{rgb}{0.95,0.95,0.95}
-\setminted{linenos=true, fontsize=\footnotesize, bgcolor = bg}
+\setminted{frame=single, obeytabs=true, tabsize=4, breaklines=true, numbersep = -10pt, linenos=true, fontsize=\scriptsize}
+\usemintedstyle{vs}
 \usetikzlibrary{external}
 \tikzexternalize[prefix=figures/]
 \pgfplotsset{width=10cm, compat=1.18}
@@ -103,10 +106,10 @@ To understand the characteristics of relevant noise, the signal is plotted in
 both the time and frequency domain as in Fig.~\ref{fig:p2-timefreq},
 understanding the importance of the sampling rate for the incoming signal:
 \begin{minted}{matlab}
-Fs = 1000;                                  % Pixel Sampling Rate [Hz]
-T = pixels/Fs;                              % Time to recieve an image
-t = linspace(0, T, length(sig)+1);          % Time vector for full image
-f = linspace(-Fs/2, Fs/2, length(sig)+1);   % Frequency Vector
+    Fs = 1000;                                              % Pixel Sampling Rate [Hz]
+    T = pixels/Fs;                                          % Time to recieve an image
+    t = linspace(0, T, length(sig)+1);                      % Time vector for full image
+    f = linspace(-Fs/2, Fs/2, length(sig)+1);               % Frequency Vector
 \end{minted}
 
 \begin{figure}[h]
@@ -122,10 +125,10 @@ periods for the noise, and graphically we can determine that it appears to be
 approximately 1.477 seconds long, confirming the engineers approximations.
 Using MATLAB and the provided \verb+estimateNoise+ function, a vector
 representing one period of this noise was computed:
-\begin{minted}[firstnumber=62]{matlab}
-T = candidateT(1);                                       % 1.477s 
-noisePeriodSamples = T * Fs;                             % samples in 1.477s 
-Noisesig = estimateNoise(sig(1, :), noisePeriodSamples); % estimated noise 
+\begin{minted}[firstnumber=61]{matlab}
+    T = candidateT(1);                                      % period of noise
+    periodInSamples = T * Fs;                               % samples in noise period
+    Noisesig = estimateNoise(sig(1, :), periodInSamples);   % estimated noise function
 \end{minted}
 
 Comparing the estimated noise to the received signal in
@@ -150,15 +153,14 @@ In MATLAB, integrals are substituted for Riemann sums on the discrete vector,
 computing $c_n$ for $-6\le n \le 6$ taking into account an accurate time vector
 and sampling rate:
 
-\begin{minted}{matlab}
-t1= t(t<T); t1(end) = [];                           % Noise Time vector 
-ts = t1(2)-t1(1);                                   % Sampling interval [s]
-f0 = 1/T;                                           % Fundamental Frequency
-N = 6;                                              % Number of harmonics
-n = (-N:N).';                                       % Vector of harmonics
-cn = f0 * Noisesig * exp(-1j*2*pi*f0*n*t1).' * ts;  % Fourier coefficients
-c0 = cn(N+1);                                       % DC coefficient
-NoisesigApprox = cn * exp(1j*2*pi*n*f0*t1);         % Fourier approximation
+\begin{minted}[firstnumber=79]{matlab}
+    t1= t(t<T); t1(end) = [];                               % Noise Time vector 
+    ts = t1(2)-t1(1);                                       % Sampling interval [s]
+    f0 = 1/T;                                               % Fundamental Frequency
+    N = 6;                                                  % Number of harmonics
+    n = (-N:N).';                                           % Vector of harmonics
+    cn = f0 * Noisesig * exp(-1j*2*pi*f0*n*t1).' * ts;      % Fourier coefficients
+    c0 = cn(N+1);                                           % DC coefficient
 \end{minted}
 
 The DC coefficient is computed as $c_0 = +0.3571$, and the complex coefficients
@@ -176,14 +178,15 @@ BASA has confirmed that there should be no DC component to the periodic noise.
 Because $c_0$ represents the DC component of the Fourier series, this term can
 simply be equated to 0 in order to remove this bias:
 
-\begin{minted}[firstnumber=62]{matlab}
-cn(N+1) = 0;                                   % remove DC bias
+\begin{minted}[firstnumber=90]{matlab}
+    c0 = 0;                                                 % DC coefficient
+    cn(N+1) = c0;                                           % Corresponding cn coefficient
 \end{minted}
 
 With the correct Fourier coefficients determined, the signal can be
 reconstructed for the total period of the image signal, as per the following:
-\begin{minted}{matlab}
-Noisesig_fs = cn * exp(1j*2*pi*f0*n*t);        % Fourier series for total t
+\begin{minted}[firstnumber=93]{matlab}
+    Noisesig_fs = cn * exp(1j*2*pi*f0*n*t);                 % Fourier series for total t
 \end{minted}
 
 To test the accuracy of the model, this Fourier approximation is plotted
@@ -202,8 +205,8 @@ at the peaks and such. The overall shape of the noise is represented, but it is
 expected that the denoising may not be sufficient. This approximation can be
 tested by subtracting the periodic noise from the incoming image signal.
 
-\begin{minted}[firstnumber=62]{matlab}
-im1(1,:) = sig(1,:) - Noisesig_fs;    % First image with periodic noise removed
+\begin{minted}[firstnumber=130]{matlab}
+    im1(1,:) = sig(1,:) - Noisesig_fs;                      % First image with periodic noise removed
 \end{minted}
 
 The above reshaping and Fourier transform of the denoised image was then
@@ -249,7 +252,7 @@ specific location.
 
 \subsubsection*{Removing Bandlimited Noise}
 
-\begin{wrapfigure}[9]{r}{0.4\textwidth}
+\begin{wrapfigure}[10]{r}{0.4\textwidth}
     \vspace*{-12pt}
     \centering
     \includegraphics[width=6cm]{figures/p2-bandnoise.png}
@@ -265,13 +268,14 @@ frequency vector, multiplying frequency components within the band by zero,
 while leaving other data untouched. Finally, the inverse Fourier transform must
 be computed to convert the de-noised signal back to the time domain for
 viewing:
-\begin{minted}{matlab}
-B_low = 223;                                       % band lower freq 
-B_high = 240;                                      % band upper freq
-filter = ones(1, length(f));                       % Initialise filter vector
-filter((abs(f) > B_low) & (abs(f) < B_high)) = 0;  % Set filter within band to zero
-filtered = fftshift(IM1(1,:)).*filter;             % Filter shifted signal
-im2(1,:) = ifft(ifftshift(filtered));              % Inverse shifting and fourier transform
+\begin{minted}[firstnumber=150]{matlab}
+    B_low = 223;                                                % Lower bandwidth frequency
+    B_high = 240;                                               % Upper bandwidth frequency
+    filter = ones(size(f));                                     % Initiallise with ones
+    filter((abs(f) > B_low) & (abs(f) < B_high)) = 0;           % Assign 0 to elements in band
+    filtered = fftshift(IM1(1,:)) .* filter;                    % Filter in frequency domain
+    im2 = zeros(size(sig));                                     % Initialise for performance
+    im2(1,:) = ifft(ifftshift(filtered));                       % Filtered image signal in time domain
 \end{minted}
 
 Showing this final image in Fig.~\ref{fig:p2-im1recov}, we can see that the
@@ -284,9 +288,52 @@ image:
     \caption{Recovered image from the rover\label{fig:p2-im1recov}}
 \end{figure}
 
-\subsection{Recoving All Images}
-Knowing that all images posess the same periodic
+\subsection{Choosing A Site}
+Knowing the process for denoising incoming images, the other three sites were
+recovered. Periodic noise is the same for each image so was subtracted as
+above, however removing bandlimited noise required reconstructing the band-stop
+filter for each image. To do this, the frequency bands were determined visually
+for each image in the frequency domain, and then a for loop was used to filter
+the corresponding images:
+\begin{minted}{matlab}
+    % Visually get bands of noise
+    bands = {[223, 240], [232, 246], [234, 251], [253, 268]};
+    % Remove bandlimited noise from each image
+    filter = ones(size(f));                                     % Initialise for performance
+    im2 = zeros(size(im1));                                     % Initialise for performance
+    for k = 1:length(bands)
+        filter(1:end) = 1;                                      % Reallocate ones
+        filter(abs(f) > bands{k}(1) & abs(f) < bands{k}(2)) = 0;% Construct filter
+        filteredIm = fftshift(IM1(k, :)) .* filter;             % Apply in frequency domain
+        im2(k, :) = ifft(ifftshift(filteredIm));                % Store in time domain
+    end
+\end{minted}
 
+The result, as seen in Fig.~\ref{fig:p2-landingsites}, is four clear images
+complete with navigational numbers: \vspace*{5pt}
+
+\begin{tabularx}{\textwidth}{c| *{5}{Y} }
+    Site   & Top Left & Top Right & Bottom Left & Bottom Right \\
+    \hline
+    Site 1 & 819      & 124       & 321         & 648          \\
+    Site 2 & 246      & 979       & 916         & 321          \\
+    Site 3 & 111      & 371       & 958         & 351          \\
+    Site 4 & 841      & 331       & 362         & 615
+\end{tabularx}
+\pagebreak
+\begin{figure}
+    \centering
+    \includegraphics[width=12cm]{figures/p2-landingsites.png}
+    \caption{All four sites recovered\label{fig:p2-landingsites}}
+\end{figure}
+
+It appears as though site 4 may be the ideal landing site, as it is the only
+image showing a large landscape that is almost entirely flat except for the far
+away mountains. Site 2 appears as though It could be a good site, however there
+is not a large field of view in the image. Sites 1 and 3 have large mountains
+and valleys, and are therefore unsuitable for ensuring a safe landing.
+
+\pagebreak
 %--------------------------------------------------------------------------
 %
 % SECTION 3: IMPULSE ANALYSIS

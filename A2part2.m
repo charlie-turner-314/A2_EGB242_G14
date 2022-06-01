@@ -147,23 +147,16 @@ title("Magnitude Spectrum of Partially Denoised Image"), xlabel("Frequency [Hz]"
 % xlabel("Freuqency [Hz]"), ylabel("Magnitude"), title("Magnitude spectrum of bandlimited noise")
 % 
 % % define Band-stop filter
-% B_low = 223;                                        % Lower bandwidth frequency
-% B_high = 240;                                       % Upper bandwidth frequency
-% % create vector to filter signal
-% filter = ones(size(f));                             % Initiallise with ones
-% filter((abs(f) > B_low) & (abs(f) < B_high)) = 0;   % Assign 0 to elements in band
-% % filter HDM with filter vector k_filter
-% filtered = fftshift(IM1(1,:)) .* filter;            % Filter shifted signal in frequency domain
-% 
-% figure('Name', "Filtered Image Magnitude Spectrum")
-% plot(f, abs(filtered/Fs))
-% 
-% % inverse shifting and fourier transform to change to time domain
-% im2 = zeros(size(sig));                             % Initialise for performance
-% im2(1,:) = ifft(ifftshift(filtered));               % Filtered image signal in time domain
-% 
-% figure('Name', "Filtered Image")
-% imshow(reshape(im2(1,:), h, w))
+B_low = 223;                                        % Lower bandwidth frequency
+B_high = 240;                                       % Upper bandwidth frequency
+filter = ones(size(f));                             % Initiallise with ones
+filter((abs(f) > B_low) & (abs(f) < B_high)) = 0;   % Assign 0 to elements in band
+filtered = fftshift(IM1(1,:)) .* filter;            % Filter shifted signal in frequency domain
+im2 = zeros(size(sig));                             % Initialise for performance
+im2(1,:) = ifft(ifftshift(filtered));               % Filtered image signal in time domain
+
+figure('Name', "Filtered Image")
+imshow(reshape(im2(1,:), h, w))
 %% 2.11 - Repeat denoising
 im1(2, :) = sig(2, :) - Noisesig_fs;                % Denoise image 2
 im1(3, :) = sig(3, :) - Noisesig_fs;                % Denoise image 3
@@ -177,15 +170,16 @@ for k = 2:size(sig, 1)
     title(sprintf("Magnitude Spectrum of Image %i", k))
     xlabel("Frequency [Hz]"), ylabel("Magnitude")
 end
-% visually get bands of noise, don't change image 1
+% Visually get bands of noise
 bands = {[223, 240], [232, 246], [234, 251], [253, 268]};
-% remove bandlimited noise
-filter = ones(size(f));                           % Initialise for performance
+% Remove bandlimited noise from each image
+filter = ones(size(f));                             % Initialise for performance
+im2 = zeros(size(im1));                             % Initialise for performance
 for k = 1:length(bands)
-    filter(1:end) = 1;
+    filter(1:end) = 1;                              % Reallocate ones
     filter(abs(f) > bands{k}(1) & abs(f) < bands{k}(2)) = 0;
-    filteredIm = fftshift(IM1(k, :)) .* filter;
-    im2(k, :) = ifft(ifftshift(filteredIm));
+    filteredIm = fftshift(IM1(k, :)) .* filter;     % Apply the filter in frequency domain
+    im2(k, :) = ifft(ifftshift(filteredIm));        % Store the final image in time domain
 end
 % Show all images
 figure('Name', "All filtered Images"), hold on;

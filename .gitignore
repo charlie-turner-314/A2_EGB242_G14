@@ -1,4 +1,8 @@
 .vscode
-Report
-!Report/report.tex
-!Report/report.pdf
+settings.json
+Report/*
+*/_minted-report/*
+!report.tex
+!report.pdf
+
+!*/
