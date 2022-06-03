@@ -1,33 +1,81 @@
 \documentclass[12pt]{article}
+% Layout
 \usepackage[a4paper, portrait, margin=1in]{geometry}
-\usepackage{amsmath}
-\usepackage{titling}
-\usepackage{minted}
-\usepackage{pgfplots}
 \usepackage[none]{hyphenat}
+\usepackage{titling}
+% Math
+\usepackage{amsmath}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\DeclareMathOperator{\sinc}{sinc}
+% Captions
+\usepackage[format=plain,
+    font={small, it}, justification=centering]{caption}
+\usepackage{subcaption}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\hypersetup{
+    colorlinks,
+    linkcolor={red!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+\usepackage{parskip}
+\setlength\parindent{0pt}
+
+% Itemize & enumerate
+\usepackage{enumitem}
+
+% Numbering of sections
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}.}
+\renewcommand{\thesubsubsection}{\roman{subsubsection}.}
+
+% MATLAB CODE
+\usepackage{minted}
+\setminted{frame=single, obeytabs=true, tabsize=4, breaklines=true, numbersep = -12pt, linenos=true, fontsize=\scriptsize}
+\usemintedstyle{vs}
+% Data Visualisation
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm, compat=1.18}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{tabularx}
-\newcolumntype{Y}{>{\centering\arraybackslash}X}
-\usepackage[format=plain,
-    font={small, it}, justification=centering]{caption}
 \setkeys{Gin}{width=14cm}
-\definecolor{bg}{rgb}{0.95,0.95,0.95}
-\setminted{frame=single, obeytabs=true, tabsize=4, breaklines=true, numbersep = -10pt, linenos=true, fontsize=\scriptsize}
-\usemintedstyle{vs}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+% TIKZ
 \usetikzlibrary{external}
 \tikzexternalize[prefix=figures/]
-\pgfplotsset{width=10cm, compat=1.18}
-\DeclareMathOperator{\sinc}{sinc}
+% Itemize & enumerate
+\usepackage{enumitem}
 
+% Numbering of sections
+\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\roman{subsubsection}.}
+
+% Numbering of items
+\numberwithin{equation}{section}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\renewcommand{\refname}{}
+% FROM EXAMPLE ASS - EGB242
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+% METADATA
 \author{
-    Charlie Turner: n10752846
-    \and
-    Joel Kemp: n10746862
-    \and
-    Viet Truong Minh: n10440151
+    Charlie Turner \small n10752846 \and
+    Joel Kemp \small n10746862 \and
+    Viet Truong Minh \small n10440151
 }
-\title{EGB242 Assignment 2}
+\title{
+    \normalfont{} \normalsize{}
+    \begin{flushleft}
+        \textsc{Queensland University of Technology, EGB242} \\ [5pt]
+    \end{flushleft}
+    \horrule{0.5pt} \\[0.4cm]
+    \huge Assignment 2 \\
+    \large \textsc{MARS242 --- Orbiting The Red Planet}   \\ % The assignment title
+    \horrule{2pt} \\[0.2cm]
+    \textbf{Group 14} \\
+}
 
 \begin{document}
 
@@ -49,9 +97,9 @@ important tasks to be completed:
     \item[-] Ensuring the safety of the Martian habitats for the current and future crews
 \end{itemize}
 
-\noindent To achieve these objectives, the team must be able to properly interpret and
-analyse data streams from a rover scouting the surface prior to landing.
-The landing site must be identified despite periodic and bandlimited noise
+To achieve these objectives, the team must be able to properly interpret and
+analyse data streams from a rover scouting the surface prior to landing. The
+landing site must be identified despite periodic and bandlimited noise
 disrupting signal streams. Once a landing site is determined, the acoustic
 properties of the habitat's rooms must be analysed, removing interference and
 noise arising from the communication channel and method.
@@ -70,13 +118,18 @@ astronauts on board Mars-242. The rover's data is vital for the survival of the
 mission, so a solution has been found to send the raw data directly to
 astronauts, but there are complications in this process.
 
-\subsection*{Communication Channels}
+\subsection{Communication Channels}
+The spaceship has a constant magnitude function in the frequency domain between
+$-f_{bw}$ and $f_{bw}$.
 \begin{math}
     s_{rov}(t) = 8000 \times \sinc^2(4000t)\cos(2\pi \times 8000t)
 \end{math}
-\subsection*{Rover Transmission Function}
-\subsection*{Filtering Information}
-\subsection*{Signal Recovery}
+\subsection{Rover Transmission Function}
+\begin{math}
+    S(f) \times
+\end{math}
+\subsection{Filtering Information}
+\subsection{Signal Recovery}
 \pagebreak
 
 %--------------------------------------------------------------------------
@@ -145,7 +198,7 @@ With the correct discrete representation of periodic noise determined, we can
 model \verb+Noisesig+ with a complex fourier series as follows:
 
 \begin{align*}
-    x(t)             & = \sum_{n=-\infty}^{\infty} c_n \exp(j 2\pi n f_0 t)        \\
+    x(t)             & = \sum_{n=-\infty}^{\infty} c_n e^{j 2\pi n f_0 t}          \\
     \text{with } c_n & = \frac{1}{T} \int^{t_0 + T}_{t_0} x(t)e^{-j2\pi nf_0 t} dt
 \end{align*}
 
@@ -180,7 +233,7 @@ simply be equated to 0 in order to remove this bias:
 
 \begin{minted}[firstnumber=90]{matlab}
     c0 = 0;                                                 % DC coefficient
-    cn(N+1) = c0;                                           % Corresponding cn coefficient
+    cn(N+1) = c0;                                           % Corresponding coefficient in cn vector 
 \end{minted}
 
 With the correct Fourier coefficients determined, the signal can be
@@ -189,29 +242,31 @@ reconstructed for the total period of the image signal, as per the following:
     Noisesig_fs = cn * exp(1j*2*pi*f0*n*t);                 % Fourier series for total t
 \end{minted}
 
-To test the accuracy of the model, this Fourier approximation is plotted
-against the noise profile for one period, as seen in
+To test the accuracy of the model, this Fourier approximation was plotted
+against the estimated noise profile for one period, as seen in
 Fig.~\ref{fig:p2-noisefscomp}:
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=7cm]{figures/p2-noisefscomp.png}
+    \includegraphics[width=9cm]{figures/p2-noisefscomp.png}
     \caption{Estimated noise and Fourier series approximation\label{fig:p2-noisefscomp}}
 \end{figure}
 
-Visually, the Fourier approximation with 6 harmonics doesn't provide a clear
+Visually, the Fourier approximation using 6 harmonics does not provide a full
 representation of the signal, as it is unable to model the more detailed noise
 at the peaks and such. The overall shape of the noise is represented, but it is
-expected that the denoising may not be sufficient. This approximation can be
-tested by subtracting the periodic noise from the incoming image signal.
+expected that the denoising may not be sufficient for recoving detail within
+the image.
+\subsection{Removing Periodic Noise}
+The above period noise approximation can be tested by subtracting the periodic
+noise from the incoming image signal:
 
 \begin{minted}[firstnumber=130]{matlab}
     im1(1,:) = sig(1,:) - Noisesig_fs;                      % First image with periodic noise removed
 \end{minted}
 
-The above reshaping and Fourier transform of the denoised image was then
-computed to view the image and its magnitude spectrum at this stage of the
-denoising process:
+As with the original signal, this denoised signal was then reshaped and shown
+in Fig.~\ref{fig:p2-im1}, along with the frequency domain representation:
 
 \begin{figure}[ht]
     \centering
@@ -222,13 +277,12 @@ denoising process:
 As expected, the image is not noticeably clearer than the original, with strong
 lines still obscuring the intended picture. The magnitude spectrum confirms
 this noise, with large frequency spikes present at specific low frequencies.
-This implies that there is still considerable periodic noise. To improve the
-noise approximation, a more suitable number of harmonics would be 10, as it
-captures the details much more accurately. It also requires very little extra
-computational power, taking only about 0.03 seconds extra to compute the
-Fourier approximation than with 6 harmonics. The added accuracy is shown below
-in Fig.~\ref{fig:p2-compharms}, with 10 harmonics required to achieve a
-considerably more accurate approximation.
+This indicates that there is still considerable periodic noise present. To
+improve the noise approximation, a more suitable number of harmonics would be
+10, as it captures the details much more accurately. It also requires very
+little extra computational power, taking only about 0.03 seconds longer to
+compute the Fourier approximation. The effect of 10 harmonics is shown in
+Fig.~\ref{fig:p2-compharms}:
 
 \begin{figure}[ht]
     \centering
@@ -248,11 +302,10 @@ again denoise the image, shown in Fig.~\ref{fig:p2-im1improved}:
 The strong predictable lines corrupting the image are now much less pronounced,
 and the outline of what resembles a mountain and rocky terrain can be
 distinguished. However, the image is still much too noisy to discern the
-specific location.
+specific location. \pagebreak
+\subsection{Removing Bandlimited Noise}
 
-\subsubsection*{Removing Bandlimited Noise}
-
-\begin{wrapfigure}[10]{r}{0.4\textwidth}
+\begin{wrapfigure}{r}{0.4\textwidth}
     \vspace*{-12pt}
     \centering
     \includegraphics[width=6cm]{figures/p2-bandnoise.png}
@@ -279,22 +332,22 @@ viewing:
 \end{minted}
 
 Showing this final image in Fig.~\ref{fig:p2-im1recov}, we can see that the
-picture has been recovered, along with navigational numbers present on the
-image:
+picture has been recovered, including the navigational numbers which were not
+visible after removing only the periodic noise:
 
 \begin{figure}[ht]
     \centering
-    \includegraphics[width=7cm]{figures/p2-im1recov.png}
+    \includegraphics[width=9cm]{figures/p2-im1recov.png}
     \caption{Recovered image from the rover\label{fig:p2-im1recov}}
 \end{figure}
 
+\pagebreak
 \subsection{Choosing A Site}
-Knowing the process for denoising incoming images, the other three sites were
-recovered. Periodic noise is the same for each image so was subtracted as
-above, however removing bandlimited noise required reconstructing the band-stop
-filter for each image. To do this, the frequency bands were determined visually
-for each image in the frequency domain, and then a for loop was used to filter
-the corresponding images:
+The removal of periodic noise was done as above for all four images, however
+removing bandlimited noise required reconstructing the band-stop filter for
+each image. In MATLAB, the frequency bands were determined visually for each
+image in the frequency domain, and then a for loop was used to filter the
+corresponding images:
 \begin{minted}{matlab}
     % Visually get bands of noise
     bands = {[223, 240], [232, 246], [234, 251], [253, 268]};
@@ -310,28 +363,32 @@ the corresponding images:
 \end{minted}
 
 The result, as seen in Fig.~\ref{fig:p2-landingsites}, is four clear images
-complete with navigational numbers: \vspace*{5pt}
+complete with navigational numbers listed in Table~\ref{tab:p2-landingsites}:
 
-\begin{tabularx}{\textwidth}{c| *{5}{Y} }
-    Site   & Top Left & Top Right & Bottom Left & Bottom Right \\
-    \hline
-    Site 1 & 819      & 124       & 321         & 648          \\
-    Site 2 & 246      & 979       & 916         & 321          \\
-    Site 3 & 111      & 371       & 958         & 351          \\
-    Site 4 & 841      & 331       & 362         & 615
-\end{tabularx}
-\pagebreak
-\begin{figure}
+\begin{figure}[ht]
     \centering
-    \includegraphics[width=12cm]{figures/p2-landingsites.png}
+    \includegraphics[width=10cm]{figures/p2-landingsites.png}
     \caption{All four sites recovered\label{fig:p2-landingsites}}
 \end{figure}
+\begin{table}[ht]
+    \small
+    \caption{Navigational Numbers For Each Site\label{tab:p2-landingsites}}
+    \begin{tabularx}{\textwidth}{c| *{5}{Y} }
+        Site   & Top Left & Top Right & Bottom Left & Bottom Right \\
+        \hline
+        Site 1 & 819      & 124       & 321         & 648          \\
+        Site 2 & 246      & 979       & 916         & 321          \\
+        Site 3 & 111      & 371       & 958         & 351          \\
+        Site 4 & 841      & 331       & 362         & 615
+    \end{tabularx}
+\end{table}
 
 It appears as though site 4 may be the ideal landing site, as it is the only
 image showing a large landscape that is almost entirely flat except for the far
-away mountains. Site 2 appears as though It could be a good site, however there
-is not a large field of view in the image. Sites 1 and 3 have large mountains
-and valleys, and are therefore unsuitable for ensuring a safe landing.
+away mountains. Site 2 could possibly be a good site, however there is not a
+large field of view in the image, leaving uncertainty about the surrounding
+terrain. Sites 1 and 3 have large mountains and valleys, and are therefore
+unsuitable for ensuring a safe landing.
 
 \pagebreak
 %--------------------------------------------------------------------------
@@ -342,74 +399,238 @@ and valleys, and are therefore unsuitable for ensuring a safe landing.
 \section{Habitat Impulse Analysis}
 With a landing site chosen, the base of operations has been set up. In order to
 ensure safety of occupants, acoustic properties of rooms in the habitat must be
-analysed. This will allow the team to determine astronauts' locations in an
-emergency if they cannot identify it themselves. For this analyses, the team
-has recorded the impulse responses of different rooms, and sent them back to
-the team at BASA headquarters. The signal is in the form of a Frequency
-Division Multiplexed (FDM) data stream, containing the impulse responses as
-well as a text message indicating the astronaut and room.
-
-The result is a signal which is unintelligible, with each part of the data
-modulated onto different, non-overlapping frequency bands. This is demonstrated
-in the simplified figure below:
-
-\begin{center}
-    \begin{tikzpicture}
-        \begin{axis}[
-            title = {Magnitude Spectrum of FDM Signal},
-            height = 5cm,
-            xlabel = {Frequency},
-            ylabel = {Magnitude},
-            axis lines = center,
-            enlargelimits,
-            xtick = {-4, -2, 2, 4},
-            xticklabels = {$-f_{c2}$,$-f_{c1}$, $f_{c1}$, $f_{c2}$},
-            xticklabel style={fill=white},
-            yticklabels = {,,}
-            clip=false,
-            axis on top,
-            x label style={at={(axis description cs:0.5,0)},anchor=north},
-            y label style={at={(axis description cs:0,.5)},rotate=90,anchor=south},
-            name=ax
-            ]
-            \addplot[ultra thick, black] coordinates {(-5,0)(-4,1)(-3,0)(-2,1)(-1,0)(1, 0)(2,1)(3,0)(4,1)(5,0)};
-
-            \pgfplotsinvokeforeach{-5,-3,-1,1,3, 5}{
-                \addplot [dashed] coordinates {(#1,-0.3)(#1,1)};
-            }
-
-        \end{axis}
-    \end{tikzpicture}
-\end{center}
-
-\noindent
-In the case of the habitat's acoustic responses, all intended messages are
-multiplexed to occupy 8kHz of bandwidth at differing carrier frequencies. In
-order to recover the impulse responses and text messages from the FDM signal,
-these different carrier frequencies must be determined, and each signal must be
-demodulated.
-\subsection*{Spectrum Analyser}
-To determine the carrier frequencies for the multiplexed signal, the Fourier
-transform of the signal is used to plot the magnitude spectrum in MATLAB. This
-is done by first determining the time and frequency vectors for the signal,
-knowing that incoming signal is sampled at \verb+fs=576+kHz.
+analysed. For this analyses, the team has recorded the impulse responses of
+different rooms, and sent them back to the team at BASA headquarters. The
+signal is in the form of a Frequency Division Multiplexed (FDM) data stream,
+with all impulse responses and text describing locations within the same 0.5s
+signal. In the case of the habitat's acoustic responses, all intended messages
+are multiplexed to occupy 8kHz of bandwidth at differing sub-carrier
+frequencies. To recover the messages, the command centre's hardware system
+analyses the incoming spectrum, demultiplexes the signals, applies analogue
+filtering and then the signals are sampled by an analogue to digital converter.
+\subsection{Spectrum Analyser}
+The Fourier transform of the signal is used to plot the magnitude spectrum in
+MATLAB\@. This is done by first determining the time and frequency vectors for
+the signal, knowing that incoming signal is sampled at \verb+fs=576+kHz:
 
 \begin{minted}{matlab}
-Ts = 1/fs;                              % Sampling Period [s]
-t = 0:Ts:0.5; t(end) = [];              % Time vector
-f = linspace(-fs/2, fs/2, length(t)+1); % Frequency Vector
-f(end)=[];  
-MUXSIG = fft(muxSignal);                % Fourier Transform
+    Ts = 1/fs;                                                  % Sampling Period [s]
+    t = 0:Ts:0.5; t(end) = [];                                  % Time vector
+    f = linspace(-fs/2, fs/2, length(t)+1); f(end) = [];        % Frequency Vector
+    MUXSIG = fft(muxSignal);                                    % Fourier Transform
 \end{minted}
 
-Plotting the signals,
+Plotting both the time and frequency domains in Fig.~\ref{fig:p3-multiplexed},
+the signal is clearly composed of 6 multiplexed signals, as shown by the six
+clear peaks in the frequency domain, mirrored in both the positive and negative
+frequencies.
 
-\subsection*{Demultiplexing}
-\subsection*{Filtering}
-\subsection*{Resampling for Analogue to Digital Conversion}
-\subsection*{Resampling for Analogue to Digital Conversion}
-\subsection*{Practical Analysis}
+\begin{figure}[ht]
+    \centering
+    \includegraphics{figures/p3-multiplexed.png}
+    \caption{Recieved Signal in Time and Frequency Domains\label{fig:p3-multiplexed}}
+\end{figure}
+
+\subsection{Demultiplexing}\label{sec:p3-demultiplexing}
+The \verb+findpeaks+ MATLAB function was used to find the exact sub-carrier
+frequencies efficiently and accurately. The magnitude and phase of those
+frequency shifts was then determined, ensuring that demultiplexing can
+accurately recover the signals despite any phase shift or magnitude distorsion.
+\begin{minted}{matlab}
+    MUXSIGshift = fftshift(MUXSIG);                             % Shift to correspond to f
+    % Find 6 highest peaks (+ve frequencies)
+    [~, fshift] = findpeaks(abs(MUXSIGshift(f>0)), f(f>0), 'NPeaks',6, 'SortStr','descend'); 
+    fshift = sort(fshift);                                      % Sort in asc order
+    fshift_indices = find(ismember(f, fshift));                 % Find indices within f
+    Mag = abs(MUXSIGshift(fshift_indices));                     % Corresponding Magnitudes
+    Phase = angle(MUXSIGshift(fshift_indices));                 % Corresponding Phase [rads]    
+\end{minted}
+
+The 6 signal streams were then recovered using a function provided by the team
+at BASA, \verb+FDMDemux+. This function takes the signal, the frequency shifts,
+and the corresponding magnitudes and phases, and returns a matrix containing
+each individual demultiplexed stream:
+
+\begin{minted}{matlab}
+    xdm = FDMDemux(muxSignal, t, Mag, fshift, Phase);           % Demultiplex using known values
+    XDM = fft(xdm, length(xdm), 2);                             % Row-wise FT
+\end{minted}
+
+Plotting the demultiplexed signals in Fig.~\ref{fig:p3-demultiplexed}, we can
+see that there are 6 distinct signals, however the frequency domains clearly
+show leftover noise from the demultiplexing process. Data within each stream
+occupies 8kHz bandwidth, so the high-frequency noise will need to be filtered
+to fully recover each signal. Since the streams have been demultiplexed, a
+low-pass filter will be ideal for this process.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{figures/p3-demultiplexed.png}
+    \caption{Demultiplexed Data Streams in Time and Frequency Domains\label{fig:p3-demultiplexed}}
+\end{figure}
+
+\pagebreak
+\subsection{Filtering}
+BASA has provided four candidate filter circuits and their corresponding
+transfer functions. The four transfer functions, as shown in MATLAB, are
+depicted in Fig.~\ref{fig:p3-tfs}:
+
+\begin{figure}[ht]
+    \centering
+    \begin{tabular}{cc}
+        \verb+sys(1)+                                              & \verb+sys(3)+                                             \\
+        \includegraphics[width=0.28\textwidth]{figures/p3-tf1.png} & \includegraphics[width=0.5\textwidth]{figures/p3-tf3.png} \\
+        \verb+sys(2)+                                              & \verb+sys(4)+                                             \\
+        \includegraphics[width=0.28\textwidth]{figures/p3-tf2.png} & \includegraphics[width=0.5\textwidth]{figures/p3-tf4.png} \\
+    \end{tabular}
+    \caption{Transfer Functions of Candidate Circuits\label{fig:p3-tfs}}
+\end{figure}
+
+Knowing the properties of Laplace transforms, the poles of each system can
+indicate important information regarding stability and impulse response. The
+poles are represented in the denominator of each transfer function, so each was
+analysed to determine possible suitability.
+
+\begin{itemize}[noitemsep]
+    \item[\textbf{sys(1):}] Real, negative poles. Indicates a stable system with exponential
+        decaying impulse response.
+    \item[\textbf{sys(2):}] Real, negative poles. Indicates a stable system. Magnitude of poles
+        greater than system 1, so will likely have a quicker impulse decay comparatively.
+    \item[\textbf{sys(3):}] Negative complex conjugate poles indicate sinusoidal components within
+        the impulse response. Likely a stable system but oscillation may not be ideal.
+    \item[\textbf{sys(4):}] Complex positive poles indicate an unstable system. Not fit for our purposes.
+\end{itemize}
+
+The systems were also visualised in MATLAB, analysing the poles and zeros,
+impulse response (all except unstable system 4), and simulated frequency
+response in both a bode plot and our frequencies of interest (see
+Fig.~\ref{fig:p3-sys-analysis}).
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=14cm]{figures/p3-sys-analysis.png}
+    \caption{System Analysis of Candidate Circuits\label{fig:p3-sys-analysis}}
+\end{figure}
+
+System 1 was chosen as the best candidate, as it has characteristics of a low
+pass filter in the bode diagram. The impulse response rises and decays
+exponentially without in a short period of time, without oscillatory behaviour.
+Looking at the frequency response of the system, we can see that the the bode
+diagram indicates less than 1.5dB attenuation throughout the 0-8kHz band,
+before rolling off at 40dB per decade. This is the implication of using real
+analogue filters; the roll off cannot be infinitely steep, so some amount of
+noise will remain outside the desired band.
+
+To apply the filter in MATLAB, the frequency response of system 1 was
+multiplied by each stream in the frequency domain. To get this accurate
+frequency response vector, first the impulse response is computed for \verb+t+,
+which is the inverse laplace tranform of the systems transfer function in the
+s-domain. The frequency response is then the fourier transform of this impulse
+response. The frequency response could also be computed directly by
+substituting $j\omega$ for $s$ in the transfer function.
+
+\begin{minted}{matlab}
+    syms s;                                                     % Define symbolic s
+    [Num,Den] = tfdata(sys(1),'v');                             % Extract numerator and denominator
+    sys1_TF = poly2sym(Num, s)/poly2sym(Den, s);                % Get symbolic transfer function
+    sys1_IR = matlabFunction(ilaplace(sys1_TF));                % Usable function for impulse response
+    impresp = sys1_IR(t);                                       % Discrete impulse response vector
+    freqRes = fft(impresp);                                     % Discrete Frequency response
+    MSG = zeros(size(XDM));                                     % Inilialise size For Performance
+    for k = 1:size(XDM, 1)
+        MSG(k, :) = freqRes .* XDM(k, :);                       % Apply the Transfer Function
+    end
+\end{minted}
+
+The signals were then converted back to the time domain using an inverse
+fourier transform. DC offset introduced by the filtering process was removed by
+adjusting the mean of each signal to 0. Finally, streams were scaled to occupy
+the amplitude range of $[-1, 1]$. Fig.~\ref{fig:p3-filteredstreams} shows the
+resultant time and frequency domains of each stream after filtering, scaling,
+and DC removal.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/p3-filteredstreams.png}
+    \caption{Filtered Data Streams in Time and Frequency Domains\label{fig:p3-filteredstreams}}
+\end{figure}
+\pagebreak
+\subsection{Analogue to Digital Conversion}
+Impulse response signals are sampled at 16kHz by a DAC\@. To simulate this
+process, the matlab \verb+resample+ function can be used. The following code
+resamples each of the impulse response signals (stream 1, 3, 5) to 16kHz:
+
+\begin{minted}[]{matlab}
+    FS_recov = 16e3;                                                % ADC sample rate [Fs]
+    impulses_recov = resample(msg((1:2:end), :).', FS_recov, fs).'; % Resample each impulse response stream
+\end{minted}
+
+With impulse responses resampled, new time and frequency vectors conforming to
+Nyquist sampling parameters were created to plot the digital signals in
+Fig.~\ref{fig:p3-impulse-responses}. Text streams were decoded using the
+supplied \verb+decoder+ function, displaying the room and astronaut who took
+the measurements in the title of each corresponding plot.
+
+\begin{figure}[ht]
+    \centering
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/p3-lab.png}
+        \caption{Laboratory\label{fig:p3-lab}}
+    \end{subfigure}%
+    \begin{subfigure}{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{figures/p3-livingroom.png}
+        \caption{Livingroom\label{fig:p3-livingroom}}
+    \end{subfigure} \\
+    \begin{subfigure}{\textwidth}
+        \centering
+        \includegraphics[width=0.5\textwidth]{figures/p3-kitchen.png}
+        \caption{Kitchen\label{fig:p3-kitchen}}
+    \end{subfigure}
+    \caption{Received Impulse Responses\label{fig:p3-impulse-responses}}
+\end{figure}
+
+\pagebreak
+\subsection{Practical Analysis}
+Finally, to confirm that the impulse responses received are an accurate
+representation of the locations they were gathered at, the impulse responses
+were applied to recordings of our own voices. We can do this using a
+convolution in the time domain, knowing that this represents multiplication in
+the frequency domain:
+\begin{equation*}
+    f(x) * g(x) \xrightarrow{\mathscr{F}} F(f) \times G(f)
+\end{equation*}
+In MATLAB, the voice recording is read into a row vector, and first resampled
+to match the sampling rate of the impulse responses. The resampled recording can then be
+convolved with the impulse response of each room.
+
+\begin{minted}[]{matlab}
+    [voice, fs_voice] = audioread("voice.wav");
+    % convert to row vector and only use one channel
+    voice = voice(:, 1).';
+    voice = resample(voice, FS_recov, fs_voice);                    % Resample voice to match impulse responses
+    % apply the impulse response as a convolution in the time domain
+    voiceTest = zeros([size(impulses_recov, 1) length(voice)]);     % Initialise size for performance
+    for k=1:size(impulses_recov, 1)
+        voiceTest(k, :) = conv(voice, impulses_recov(k, :), 'same');% 'same' ensures length is preserved
+    end
+\end{minted}
+
+Comparing the original voice recording to the resultant signals in
+Fig.~\ref{fig:p3-voicetest}, it can be seen that the original shape of the
+waveform is preserved with minor variations. The resultant waveforms have
+distinctly different sounds to them, as if the recording was made at the
+location of the impulse responses. Specifically, when convolved with the
+impulse responses of these rooms, there is a clear echo present in all three
+results, with the most obvious being the living room impulse response.
+
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\textwidth]{figures/p3-voicetest.png}
+    \caption{Voice and Impulse Response Testing\label{fig:p3-voicetest}}
+\end{figure}
 
 \section{Reflection}
+\pagebreak
 
 \end{document}

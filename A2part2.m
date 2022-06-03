@@ -140,7 +140,7 @@ title("Magnitude Spectrum of Partially Denoised Image"), xlabel("Frequency [Hz]"
 %% 2.10 - Remove bandlimited noise
 
 % % evaluate the fourier transform of im1
-% IM1(1,:) = fft(im1(1,:));                           % Fourier transform of denoised hiddenSignal
+IM1(1,:) = fft(im1(1,:));                           % Fourier transform of denoised hiddenSignal
 % figure('Name', "Magnitude Spectrum of Partially Denoised Image")
 % plot(f, abs(fftshift(IM1(1, :)/Fs)))                % Plot frequency domain in band of interest
 % xlim([215 250])
