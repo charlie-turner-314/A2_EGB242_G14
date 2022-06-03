@@ -5,9 +5,11 @@
 \usepackage{titling}
 % Math
 \usepackage{amsmath}
+\usepackage{amssymb}
 \usepackage{mathtools}
 \usepackage{mathrsfs}
 \DeclareMathOperator{\sinc}{sinc}
+\DeclareMathOperator{\rect}{rect}
 % Captions
 \usepackage[format=plain,
     font={small, it}, justification=centering]{caption}
@@ -37,12 +39,23 @@
 % Data Visualisation
 \usepackage{pgfplots}
 \pgfplotsset{width=10cm, compat=1.18}
+\usepackage{tikz}
+\usetikzlibrary{patterns}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{tabularx}
 \setkeys{Gin}{width=14cm}
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
-% TIKZ
+\pgfdeclarepatternformonly{nelw}%
+{\pgfqpoint{-1pt}{-1pt}}%
+{\pgfqpoint{10pt}{10pt}}%
+{\pgfqpoint{9pt}{9pt}}%
+{
+    \pgfsetlinewidth{0.4pt}
+    \pgfpathmoveto{\pgfqpoint{0pt}{0pt}}
+    \pgfpathlineto{\pgfqpoint{9.1pt}{9.1pt}}
+    \pgfusepath{stroke}
+}
 \usetikzlibrary{external}
 \tikzexternalize[prefix=figures/]
 % Itemize & enumerate
@@ -116,21 +129,280 @@ landing sites. Until a malfunction on the rover, data has been communicated
 directly with Earth, where it can be analysed and the results sent directly to
 astronauts on board Mars-242. The rover's data is vital for the survival of the
 mission, so a solution has been found to send the raw data directly to
-astronauts, but there are complications in this process.
+astronauts.
 
 \subsection{Communication Channels}
-The spaceship has a constant magnitude function in the frequency domain between
-$-f_{bw}$ and $f_{bw}$.
-\begin{math}
-    s_{rov}(t) = 8000 \times \sinc^2(4000t)\cos(2\pi \times 8000t)
-\end{math}
+The spaceship's communication channel consists of a constant-magnitude function
+in the frequency domain, between $-7100$Hz and $+7100$Hz with some magnitude
+$A$. This can be represented by the rectangular function
+\begin{equation*}
+    C_{ship}(f) = A \rect{\frac{f}{14200}}
+\end{equation*}
+and the magnitude spectrum represented in Fig.~\ref{fig:p1-ship}.
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                width=10cm , height=5cm,
+                ymin=-0.1, ymax=2,
+                xmin=-10000, xmax=10000,
+                axis lines = middle,
+                axis line style={->},
+                x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+                y label style={at={(axis description cs:-0,.5)},rotate=90,anchor=south},
+                ylabel = Magnitude,
+                xlabel = {Frequency [Hz]},
+                xtick ={-7100, 0, 7100 },
+                xticklabels = {-7100, 0, 7100},
+                ytick = {0, 1},
+                yticklabels = {, A},
+                yticklabel style = { xshift=-3cm},
+                scaled ticks = false
+            ] \addplot[ color = blue, line width = 1pt, ] coordinates {(-7100, 0) (-7100, 1) (7100, 1) (7100, 0)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Frequency Spectrum of the ship's communication channel\label{fig:p1-ship}}
+\end{figure}
+
 \subsection{Rover Transmission Function}
-\begin{math}
-    S(f) \times
-\end{math}
-\subsection{Filtering Information}
-\subsection{Signal Recovery}
+The rover's transmission function is known as a function of time, given by:
+\begin{equation*}
+    s_{rov}(t) = 8000 \times \sinc^2(4000t)\cos(2\pi \times 8000t)
+\end{equation*}
+Using the property of duality, the fourier transform of this function can be
+calculated, noting that the Fourier transform of the $\sinc^2$ function is the
+triangular function:
+\begin{equation*}
+    \triangle_T(t) \xleftrightarrow{\mathscr{F}} T\sinc^2(Tf)
+\end{equation*}
+Since the triangular function is an even function, it is also known that
+$\triangle_T(-f) = \triangle_T(f)$. From prior tasks the team has determined
+that a multiplication by a cosine term in the time domain results in a Frequency
+modulation, so the Fourier Transform of the rover's transmission function can be
+calculated as:
+\begin{align*}
+    4000 \sinc^2(4000t)   & \xrightarrow{\mathscr{F}} \triangle_{4000}(f)                                           \\
+    \therefore S_{rov}(f) & = 2 \times \frac{1}{2} \bigg[ \triangle_{4000}(f-8000) + \triangle_{4000}(f+8000)\bigg] \\
+                          & = \triangle_{4000}(f-8000) + \triangle_{4000}(f+8000)
+\end{align*}
+
+Plotting this function in Fig.~\ref{fig:p1-rov}, we can see that the rover's
+transmission function takes the form of a triangular function with bandwidth of
+$4000$, modulated to both positive and negative $8000$Hz:
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                width=10cm , height=5cm,
+                ymin=-0.1, ymax=2,
+                xmin=-14000, xmax=14000,
+                axis lines = middle,
+                axis line style={->},
+                x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+                y label style={at={(axis description cs:-0,.5)},rotate=90,anchor=south},
+                ylabel = Magnitude,
+                xlabel = {Frequency [Hz]},
+                xtick = {-12000, -8000, -4000, 0, 4000, 8000, 12000},
+                ytick = {0, 1, 2},
+                yticklabels = {, 1, },
+                x tick label style={font=\footnotesize},
+                scaled ticks = false
+            ]
+            \addplot[color = red, line width = 1pt] coordinates {(-12000, 0) (-8000, 1) (-4000, 0)};
+            \addplot[color = red, line width = 1pt] coordinates {(4000, 0) (8000, 1) (12000, 0)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Rover Transmission Function\label{fig:p1-rov}}
+\end{figure}
+
 \pagebreak
+\subsection{Filter Broadcast Information}
+To ensure the rover's signal is recieved fully, a filter must be applied to the
+data broadcasted by the ship. As the ship broadcasts on $7100$Hz unmodulated
+band, a high-pass filter is ideal. To design the filter, the frequency domain
+of both the ship's and rover's communication channels was sketched
+(Fig.~\ref{fig:p1-channels}).
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                width=10cm , height=5cm,
+                ymin=-0.1, ymax=2,
+                xmin=-14000, xmax=14000,
+                axis lines = middle,
+                axis line style={->},
+                x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+                y label style={at={(axis description cs:-0,.5)},rotate=90,anchor=south},
+                ylabel = Magnitude,
+                xlabel = {Frequency [Hz]},
+                xtick = {-12000, -8000, -4000, 0, 4000, 8000, 12000},
+                ytick = {0, 1, 1.5, 2},
+                yticklabels = {, , A, },
+                yticklabel style = { xshift=-2cm},
+                x tick label style={font=\footnotesize},
+                scaled ticks = false
+            ]
+            \addplot[color = red, line width = 1pt] coordinates {(-12000, 0) (-8000, 1) (-4000, 0)};
+            \addplot[color = red, line width = 1pt] coordinates {(4000, 0) (8000, 1) (12000, 0)};
+            \addplot[ color = blue, line width = 1pt, ] coordinates {(-7100, 0) (-7100, 1.5) (7100, 1.5) (7100, 0)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Combined communication channels\label{fig:p1-channels}}
+\end{figure}
+
+The cut-off frequency must be chosen so that it does not disrupt the incoming
+signal from the rover, but fully removes the noise from the ship's
+communication channel. As the rover's signal has been modulated to $8000$Hz, as
+long as we preserve a full half of it's triangular frequency channel no
+information loss will occur. $8000$Hz has been chosen as the cut-off frequency,
+as it will ensure that these requirements are met. The transfer function is
+then:
+\begin{equation*}
+    |H(f)| = \begin{cases}
+        1, |f| > 8000 \\
+        0, |f| < 8000
+    \end{cases}
+\end{equation*}
+
+As can be seen in Fig.~\ref{fig:p1-filter}, this is the most simplistic ideal
+filter for the task, and when applied in the frequency domain will either leave
+a frequency component as it is, or remove it entirely.
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                width=10cm , height=5cm,
+                ymin=-0.1, ymax=2,
+                xmin=-14000, xmax=14000,
+                axis lines = middle,
+                axis line style={->},
+                x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+                y label style={at={(axis description cs:-0,.5)},rotate=90,anchor=south},
+                ylabel = Magnitude,
+                xlabel = {Frequency [Hz]},
+                xtick = {-12000, -8000, -4000, 0, 4000, 8000, 12000},
+                ytick = {0, 1, 1.5, 2},
+                yticklabels = {, , A, },
+                yticklabel style = { xshift=-2cm},
+                x tick label style={font=\footnotesize},
+                scaled ticks = false
+            ]
+            \addplot[color = red, line width = 1pt] coordinates {(-12000, 0) (-8000, 1) (-4000, 0)};
+            \addplot[color = red, line width = 1pt] coordinates {(4000, 0) (8000, 1) (12000, 0)};
+            \addplot[ color = blue, line width = 1pt, ] coordinates {(-7100, 0) (-7100, 1.5) (7100, 1.5) (7100, 0)};
+            \addplot+[color = green, line width = 1pt, pattern=nelw] coordinates {(-20000, 1) (-8000, 1) (-8000, 0) (8000, 0) (8000, 1) (20000, 1)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{High-pass filter visualisation process\label{fig:p1-filter}}
+\end{figure}
+
+Graphically, we can see that the resulting signal will have none of the ship's
+broadcast frequencies, and only the outer half of the triangular rover
+transmission signal mirrored in the positive and negative frequencies.
+\pagebreak
+\subsection{Signal Recovery}
+To recover the filtered signal described in the previous section, we can use
+the modulation property once again to recover the signal. Since the function
+was modulated to $\pm 8000$Hz, we can recover it back to $0$Hz by multiplying
+by $\cos(2\pi 8000t)$ in the time domain. In the frequency domain this is
+easily visualised, and the demodulated signal is represented in
+Fig.~\ref{fig:p1-demod}.
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                width=10cm , height=5cm,
+                ymin=-0.1, ymax=2,
+                xmin=-21000, xmax=21000,
+                axis lines = middle,
+                axis line style={->},
+                x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+                y label style={at={(axis description cs:-0,.5)},rotate=90,anchor=south},
+                ylabel = Magnitude,
+                xlabel = {Frequency [Hz]},
+                xtick = {-20000, -16000, -4000, 0, 4000, 16000, 20000},
+                xticklabels = {-20k, -16k, -4k, 0, 4k, 16k, 20k},
+                ytick = {0, 1, 2},
+                yticklabels = {, 1,  },
+                x tick label style={font=\footnotesize},
+                scaled ticks = false
+            ]
+            \addplot[color = red, line width = 1pt] coordinates {(-20000, 0) (-16000, 1) (-16000, 0)};
+            \addplot[color = red, line width = 1pt] coordinates {(-4000, 0) (0, 1) (4000, 0)};
+            \addplot[color = red, line width = 1pt] coordinates {(16000, 0) (16000, 1) (20000, 0)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Demodulated Rover Signal\label{fig:p1-demod}}
+\end{figure}
+
+To remove the high frequency copies of the signal left behind, we can once
+again use an ideal filter. This time, a low-pass filter is used, and the cutoff
+frequency is chosen to be $4000$Hz. $4000$Hz is chosen as it guarantees that
+any noise outside of the rover's frequency channel will be removed. The
+transfer function for this filter is therefore:
+
+\begin{equation*}
+    |H(f)| = \begin{cases}
+        1, |f| < 4000 \\
+        0, |f| > 4000
+    \end{cases}
+\end{equation*}
+
+Multiplying the filter transfer function and the demodulated signal in the
+frequency domain, the resulting frequency domain of the rover's signal shown in
+Fig.~\ref{fig:p1-filter-demod}.
+
+\begin{figure}[ht]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+                width=10cm , height=5cm,
+                ymin=-0.1, ymax=2,
+                xmin=-21000, xmax=21000,
+                axis lines = middle,
+                axis line style={->},
+                x label style={at={(axis description cs:0.5,-0.1)},anchor=north},
+                y label style={at={(axis description cs:-0,.5)},rotate=90,anchor=south},
+                ylabel = Magnitude,
+                xlabel = {Frequency [Hz]},
+                xtick = {-20000, -16000, -4000, 0, 4000, 16000, 20000},
+                xticklabels = {-20k, -16k, -4k, 0, 4k, 16k, 20k},
+                ytick = {0, 1, 2},
+                yticklabels = {, 1,  },
+                x tick label style={font=\footnotesize},
+                scaled ticks = false
+            ]
+            \addplot[color = red, line width = 1pt] coordinates {(-4000, 0) (0, 1) (4000, 0)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Final frequency domain of rover's signal\label{fig:p1-filter-demod}}
+\end{figure}
+
+Despite multiple filtering stages, no information is lost from this process.
+This can be justified with the knowledge that the negative frequency domain of
+the Fourier Transform is a mirror of the positive domain. This means that the
+modulation term ($\cos(2\pi 8000t)$) in the rover's transmission signal
+effectively results in each half of the triangular frequency band containing
+the same information. As we filtered only one half of this signal before
+demodulating, the resulting signal can be guaranteed to contain the entirety of
+information transmitted by the rover.
+
+\subsection{Practical Filter Considerations}
+In a more practical circumstance, information may end up being lost due to the
+nature of practical analogue filters. However, since the shape of our frequency
+spectrum is a triangle, cut-off frequencies may be determined so that only a
+small amount of information would be lost and shouldn't impact the signal too
+much. The inability to construct an analogue filter with instant roll-off also
+means that noise would very likely persist from the ship's broadcast channel.
+To mitigate this as much as possible, the filter used in the high-pass stage
+should be of the highest order feasible for the application, which will have
+the steepest frequency response. Increasing the cut-off frequency of the low
+pass filter will also mitigate information loss, as long as the high frequency
+copies are still attenuated sufficiently. \pagebreak
 
 %--------------------------------------------------------------------------
 %

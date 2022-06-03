@@ -680,7 +680,7 @@ File: l3backend-pdftex.def 2022-04-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count353
 \l__pdf_internal_box=\box78
 )
-No file figures/report-figure0.aux.
+No file figures/report-figure4.aux.
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
 LaTeX Font Info:    ... okay on input line 93.
 LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 93.
@@ -774,11 +774,7 @@ File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 
 LaTeX Warning: Reference `fig:p1-ship' on page 1 undefined on input line 141.
 
-\openout6 = `figures/report-figure0.dpth'.
-
-[1
-
-{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
 LaTeX Warning: Reference `fig:p1-rov' on page 2 undefined on input line 189.
 
@@ -796,7 +792,11 @@ A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to di
 
 LaTeX Warning: Reference `fig:p1-demod' on page 2 undefined on input line 310.
 
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to disable this.
+\openout6 = `figures/report-figure4.dpth'.
+
+[3
+
+{c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
 
 LaTeX Warning: Reference `fig:p2-noisy' on page 4 undefined on input line 352.
 
@@ -933,18 +933,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 38586 strings out of 480217
- 898282 string characters out of 5893623
+ 38585 strings out of 480217
+ 898260 string characters out of 5893623
  1309943 words of memory out of 5000000
- 55928 multiletter control sequences out of 15000+600000
+ 55927 multiletter control sequences out of 15000+600000
  483632 words of font info for 87 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 103i,18n,106p,775b,2143s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on figures/report-figure0.pdf (1 page, 13922 bytes).
+ 103i,18n,106p,775b,2141s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
+Output written on figures/report-figure4.pdf (1 page, 24542 bytes).
 PDF statistics:
- 21 PDF objects out of 1000 (max. 8388607)
- 15 compressed objects within 1 object stream
+ 26 PDF objects out of 1000 (max. 8388607)
+ 18 compressed objects within 1 object stream
  2 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

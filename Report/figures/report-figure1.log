@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.29)  3 JUN 2022 17:29
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.5.29)  3 JUN 2022 16:50
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -639,11 +639,7 @@ File: tikzlibrarytopaths.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 File: tikzlibraryplotmarks.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 (c:/texlive/2022/texmf-dist/tex/generic/pgf/libraries/pgflibraryplotmarks.code.tex
 File: pgflibraryplotmarks.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-))) (c:/texlive/2022/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
-File: tikzlibrarypatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-(c:/texlive/2022/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
-File: pgflibrarypatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)) (c:/texlive/2022/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+))) (c:/texlive/2022/texmf-dist/tex/latex/wrapfig/wrapfig.sty
 \wrapoverhang=\dimen316
 \WF@size=\dimen317
 \c@WF@wrappedlines=\count351
@@ -680,25 +676,25 @@ File: l3backend-pdftex.def 2022-04-20 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count353
 \l__pdf_internal_box=\box78
 )
-No file figures/report-figure0.aux.
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 93.
-LaTeX Font Info:    ... okay on input line 93.
+No file figures/report-figure1.aux.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 82.
+LaTeX Font Info:    ... okay on input line 82.
 *geometry* detected driver: <none>
 *geometry* verbose mode - [ preamble ] result:
 * driver: \Gm@driver 
@@ -737,7 +733,7 @@ Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: wrapfig package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 93.
+Package hyperref Info: Link coloring ON on input line 82.
 (c:/texlive/2022/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count354
@@ -759,130 +755,122 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 Package pgfplots notification 'compat/show suggested version=true': document has been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 97.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 86.
 (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 97.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 86.
 (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 97.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 86.
 (c:/texlive/2022/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
 
-LaTeX Warning: Reference `fig:p1-ship' on page 1 undefined on input line 141.
+LaTeX Warning: Reference `fig:p1-ship' on page 1 undefined on input line 130.
 
-\openout6 = `figures/report-figure0.dpth'.
+A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-[1
+LaTeX Warning: Reference `fig:p1-rov' on page 2 undefined on input line 178.
+
+\openout6 = `figures/report-figure1.dpth'.
+
+[2
 
 {c:/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-
-LaTeX Warning: Reference `fig:p1-rov' on page 2 undefined on input line 189.
-
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-Overfull \hbox (4.29819pt too wide) in paragraph at lines 220--252
+Overfull \hbox (4.29819pt too wide) in paragraph at lines 209--241
 \OT1/cmr/m/n/12 To en-sure the rover's sig-nal is re-cieved fully, a fil-ter must be ap-plied to the data broad-casted
  []
 
 
-LaTeX Warning: Reference `fig:p1-filter' on page 2 undefined on input line 267.
-
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to disable this.
-
-LaTeX Warning: Reference `fig:p1-demod' on page 2 undefined on input line 310.
-
-A tikzpicture has been optimized away. Use '/tikz/external/optimize=false' to disable this.
-
-LaTeX Warning: Reference `fig:p2-noisy' on page 4 undefined on input line 352.
+LaTeX Warning: Reference `fig:p2-noisy' on page 3 undefined on input line 261.
 
 The command '\includegraphics [width=7cm]{figures/p2-noisy.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig:p2-timefreq' on page 4 undefined on input line 366.
+LaTeX Warning: Reference `fig:p2-timefreq' on page 3 undefined on input line 275.
 
 The command '\includegraphics []{figures/p2-timefreq.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-Overfull \hbox (13.15973pt too wide) in paragraph at lines 381--388
+Overfull \hbox (13.15973pt too wide) in paragraph at lines 290--297
 \OT1/cmr/m/n/12 con-firm-ing the en-gi-neers ap-prox-i-ma-tions. Us-ing MAT-LAB and the pro-vided [][]\OT1/cmtt/m/n/12 estimateNoise
  []
 
 
-LaTeX Warning: Reference `fig:p2-noisecomp' on page 4 undefined on input line 395.
+LaTeX Warning: Reference `fig:p2-noisecomp' on page 3 undefined on input line 304.
 
 The command '\includegraphics []{figures/p2-noisecomp.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-Overfull \hbox (3.13295pt too wide) in paragraph at lines 412--415
+Overfull \hbox (3.13295pt too wide) in paragraph at lines 321--324
 []\OT1/cmr/m/n/12 In MAT-LAB, in-te-grals are sub-sti-tuted for Rie-mann sums on the dis-crete vec-tor, com-put-ing
  []
 
 
-LaTeX Warning: Reference `fig:p2-noisefscomp' on page 5 undefined on input line 454.
+LaTeX Warning: Reference `fig:p2-noisefscomp' on page 4 undefined on input line 363.
 
 The command '\includegraphics [width=9cm]{figures/p2-noisefscomp.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-Overfull \hbox (7.9801pt too wide) in paragraph at lines 462--467
+Overfull \hbox (7.9801pt too wide) in paragraph at lines 371--376
 []\OT1/cmr/m/n/12 Visually, the Fourier ap-prox-i-ma-tion us-ing 6 har-mon-ics does not pro-vide a full rep-re-sen-ta-tion
  []
 
 
-LaTeX Warning: Reference `fig:p2-im1' on page 6 undefined on input line 476.
+LaTeX Warning: Reference `fig:p2-im1' on page 5 undefined on input line 385.
 
 The command '\includegraphics []{figures/p2-im1.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig:p2-compharms' on page 6 undefined on input line 492.
+LaTeX Warning: Reference `fig:p2-compharms' on page 5 undefined on input line 401.
 
 The command '\includegraphics []{figures/p2-compharms.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig:p2-im1improved' on page 6 undefined on input line 501.
+LaTeX Warning: Reference `fig:p2-im1improved' on page 5 undefined on input line 410.
 
 The command '\includegraphics []{figures/p2-im1improved.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 The command '\includegraphics [width=6cm]{figures/p2-bandnoise.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig:p2-bandnoise' on page 7 undefined on input line 523.
+LaTeX Warning: Reference `fig:p2-bandnoise' on page 6 undefined on input line 432.
 
 
-LaTeX Warning: Reference `fig:p2-im1recov' on page 7 undefined on input line 541.
+LaTeX Warning: Reference `fig:p2-im1recov' on page 6 undefined on input line 450.
 
 
-Overfull \hbox (0.18573pt too wide) in paragraph at lines 541--544
+Overfull \hbox (0.18573pt too wide) in paragraph at lines 450--453
 \OT1/cmr/m/n/12 in-clud-ing the nav-i-ga-tional num-bers which were not vis-i-ble af-ter re-mov-ing only the pe-ri-odic
  []
 
 The command '\includegraphics [width=9cm]{figures/p2-im1recov.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-Overfull \hbox (6.9755pt too wide) in paragraph at lines 553--558
+Overfull \hbox (6.9755pt too wide) in paragraph at lines 462--467
 \OT1/cmr/m/n/12 ban-dlim-ited noise re-quired re-con-struct-ing the band-stop fil-ter for each im-age. In MAT-LAB,
  []
 
 
-LaTeX Warning: Reference `fig:p2-landingsites' on page 8 undefined on input line 572.
+LaTeX Warning: Reference `fig:p2-landingsites' on page 7 undefined on input line 481.
 
 
-LaTeX Warning: Reference `tab:p2-landingsites' on page 8 undefined on input line 573.
+LaTeX Warning: Reference `tab:p2-landingsites' on page 7 undefined on input line 482.
 
 The command '\includegraphics [width=10cm]{figures/p2-landingsites.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig:p3-multiplexed' on page 9 undefined on input line 630.
+LaTeX Warning: Reference `fig:p3-multiplexed' on page 8 undefined on input line 539.
 
 The command '\includegraphics []{figures/p3-multiplexed.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig:p3-demultiplexed' on page 10 undefined on input line 666.
+LaTeX Warning: Reference `fig:p3-demultiplexed' on page 9 undefined on input line 575.
 
 The command '\includegraphics [width=\textwidth ]{figures/p3-demultiplexed.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-Overfull \hbox (3.31903pt too wide) in paragraph at lines 666--677
+Overfull \hbox (3.31903pt too wide) in paragraph at lines 575--586
 \OT1/cmr/m/n/12 how-ever the fre-quency do-mains clearly show left-over noise from the de-mul-ti-plex-ing pro-cess.
  []
 
 
-LaTeX Warning: Reference `fig:p3-tfs' on page 11 undefined on input line 682.
+LaTeX Warning: Reference `fig:p3-tfs' on page 10 undefined on input line 591.
 
 
-Overfull \hbox (5.42883pt too wide) in paragraph at lines 680--683
+Overfull \hbox (5.42883pt too wide) in paragraph at lines 589--592
 \OT1/cmr/m/n/12 BASA has pro-vided four can-di-date fil-ter cir-cuits and their cor-re-spond-ing trans-fer func-tions.
  []
 
@@ -891,41 +879,41 @@ The command '\includegraphics [width=0.5\textwidth ]{figures/p3-tf3.png}' has be
 The command '\includegraphics [width=0.28\textwidth ]{figures/p3-tf2.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 The command '\includegraphics [width=0.5\textwidth ]{figures/p3-tf4.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-Overfull \hbox (614.19498pt too wide) in paragraph at lines 686--692
+Overfull \hbox (614.19498pt too wide) in paragraph at lines 595--601
  [][] 
  []
 
 
-Overfull \hbox (1.96997pt too wide) in paragraph at lines 695--699
+Overfull \hbox (1.96997pt too wide) in paragraph at lines 604--608
 \OT1/cmr/m/n/12 im-por-tant in-for-ma-tion re-gard-ing sta-bil-ity and im-pulse re-sponse. The poles are rep-re-sented
  []
 
 
-Overfull \hbox (1.35655pt too wide) in paragraph at lines 705--707
+Overfull \hbox (1.35655pt too wide) in paragraph at lines 614--616
 []\OT1/cmr/m/n/12 Negative com-plex con-ju-gate poles in-di-cate si-nu-soidal com-po-nents within the im-pulse
  []
 
 
-LaTeX Warning: Reference `fig:p3-sys-analysis' on page 11 undefined on input line 713.
+LaTeX Warning: Reference `fig:p3-sys-analysis' on page 10 undefined on input line 622.
 
 The command '\includegraphics [width=14cm]{figures/p3-sys-analysis.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig:p3-filteredstreams' on page 12 undefined on input line 754.
+LaTeX Warning: Reference `fig:p3-filteredstreams' on page 11 undefined on input line 663.
 
 
-Overfull \hbox (5.27734pt too wide) in paragraph at lines 751--757
+Overfull \hbox (5.27734pt too wide) in paragraph at lines 660--666
 []\OT1/cmr/m/n/12 The sig-nals were then con-verted back to the time do-main us-ing an in-verse fourier trans-form.
  []
 
 The command '\includegraphics [width=0.9\textwidth ]{figures/p3-filteredstreams.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig:p3-impulse-responses' on page 13 undefined on input line 776.
+LaTeX Warning: Reference `fig:p3-impulse-responses' on page 12 undefined on input line 685.
 
 The command '\includegraphics [width=\textwidth ]{figures/p3-lab.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 The command '\includegraphics [width=\textwidth ]{figures/p3-livingroom.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 The command '\includegraphics [width=0.5\textwidth ]{figures/p3-kitchen.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
-LaTeX Warning: Reference `fig:p3-voicetest' on page 14 undefined on input line 827.
+LaTeX Warning: Reference `fig:p3-voicetest' on page 13 undefined on input line 736.
 
 The command '\includegraphics [width=\textwidth ]{figures/p3-voicetest.png}' has been optimized away. Use '/tikz/external/optimize=false' to disable this.
 
@@ -933,18 +921,18 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 38586 strings out of 480217
- 898282 string characters out of 5893623
+ 38462 strings out of 480217
+ 894435 string characters out of 5893623
  1309943 words of memory out of 5000000
- 55928 multiletter control sequences out of 15000+600000
+ 55810 multiletter control sequences out of 15000+600000
  483632 words of font info for 87 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 103i,18n,106p,775b,2143s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on figures/report-figure0.pdf (1 page, 13922 bytes).
+ 103i,18n,106p,775b,2139s stack positions out of 10000i,1000n,20000p,200000b,200000s
+<c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on figures/report-figure1.pdf (1 page, 38695 bytes).
 PDF statistics:
- 21 PDF objects out of 1000 (max. 8388607)
- 15 compressed objects within 1 object stream
+ 36 PDF objects out of 1000 (max. 8388607)
+ 24 compressed objects within 1 object stream
  2 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
